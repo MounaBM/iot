@@ -190,10 +190,43 @@ $display[$i]="
 	$scrpt[$i]=$scrpt[$i]."
 		});
 	});	
-	 $('#roomicon".$i."').click(function(){
-		 $('#iconlist".$i."').toggleClass('togglehide');//alert('testing');
+	 $('#roomicon1".$i."').click(function(){
+		 $('#iconlist1".$i."').toggleClass('togglehide');//alert('testing');
 	});
-	$('.dropdown-content img').click(function(){
+	 $('#roomicon2".$i."').click(function(){
+		 $('#iconlist2".$i."').toggleClass('togglehide');//alert('testing');
+	});
+	 $('#roomicon3".$i."').click(function(){
+		 $('#iconlist3".$i."').toggleClass('togglehide');//alert('testing');
+	});
+	 $('#roomicon4".$i."').click(function(){
+		 $('#iconlist4".$i."').toggleClass('togglehide');//alert('testing');
+	});
+	$('.dropdown-content1 img').click(function(){
+		var icn=$(this).attr('src')
+		//alert(icn);
+		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(roomicon);
+		$(roomicon).attr('src',icn);
+		
+	});
+	$('.dropdown-content2 img').click(function(){
+		var icn=$(this).attr('src')
+		//alert(icn);
+		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(roomicon);
+		$(roomicon).attr('src',icn);
+		
+	});
+	$('.dropdown-content3 img').click(function(){
+		var icn=$(this).attr('src')
+		//alert(icn);
+		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(roomicon);
+		$(roomicon).attr('src',icn);
+		
+	});
+	$('.dropdown-content4 img').click(function(){
 		var icn=$(this).attr('src')
 		//alert(icn);
 		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
@@ -201,7 +234,6 @@ $display[$i]="
 		$(roomicon).attr('src',icn);
 		
 	});";
-	
 //Customising te room naem and button name form; initially it shoud be hidden
 //Change <imput>placeholder will show the current name like room21/ study room
 //There will be arrow link; if you click it will slide down and show the 4 button name input fieldset
@@ -213,25 +245,49 @@ $display[$i]="
 $forms[$i]="
 <!--	<h3 style='padding: 0px 10px;left:13px;position: relative;display: inline-block;'>Room Name:</h3>-->
 	<div class='imagess' style='padding-top:3%;'>
-	<div id='img1".$i."' class='icon_butn'></div>
-	<div id='img2".$i."' class='icon_butn'></div>
-	<div id='img3".$i."' class='icon_butn'></div>
+	<div id='img1".$i."' class='icon_butn' style='position:absolute;top:15%;right:3%;'></div>
+	<div id='img2".$i."' class='icon_butn' style='position:absolute;top:42%;right:3%;'></div>
+	<div id='img3".$i."' class='icon_butn' style='position:absolute;top:68%;right:3%;'></div>
 </div>
 <!--	<div id='arrow'>	<img src='img/arrow.jpg'  style='width:40px;position:absolute;'>	</div>-->
-<input type='text' id='changeroom".$i."' name='roomname' placeholder='".$room[$i]."' style='border: 2px solid #ccc;padding: 6px;margin:0px 20px 90px;' >
-	<div class='roomicon'>";
-	for($j=1;$j<=4;$j++){
-$forms[$i]=$forms[$i]."<div class='dropbtn' id='btnicon".$i.$j."'><img src='img/imageson/music-on.png' style='width:40px;height:40px;position:absolute;'></div>
-<div id='iconlist".$i."' class='dropdown-content togglehide' >
+<input type='text' id='changeroom".$i."' name='roomname' placeholder='".$room[$i]."' style='border: 2px solid #ccc;padding: 6px;margin:0px 20px 10px;' >
+	<div class='roomicon'>
+<div class='dropbtn' id='roomicon1".$i."' style='right:147px;'><img src='img/imageson/music-on.png' ></div>
+<div id='iconlist1".$i."' class='dropdown-content1 togglehide' >
     <img id='icon1' src='img/imageson/fan-on.png'>
 	<img id='icon3' src='img/imageson/bulb-on.png'>
 	<img id='icon5' src='img/imageson/tube-on.png'>
 	<img id='icon7' src='img/imageson/charger-on.png'>
 	<img id='icon4' src='img/imageson/AC-on.png'>
-	</div></div>
+	</div>
+	<div class='roomicon'>
+<div class='dropbtn' id='roomicon2".$i."' style='right:79px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist2".$i."' class='dropdown-content2 togglehide' >
+    <img id='icon11' src='img/imageson/fan-on.png'>
+	<img id='icon33' src='img/imageson/bulb-on.png'>
+	<img id='icon55' src='img/imageson/tube-on.png'>
+	<img id='icon77' src='img/imageson/charger-on.png'>
+	<img id='icon44' src='img/imageson/AC-on.png'>
+	</div>
+	<div class='roomicon'>
+<div class='dropbtn' id='roomicon3".$i."' style='right:9px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist3".$i."' class='dropdown-content3 togglehide' >
+    <img id='icon111' src='img/imageson/fan-on.png'>
+	<img id='icon333' src='img/imageson/bulb-on.png'>
+	<img id='icon555' src='img/imageson/tube-on.png'>
+	<img id='icon777' src='img/imageson/charger-on.png'>
+	<img id='icon444' src='img/imageson/AC-on.png'>
+	</div>
+	<div class='roomicon'>
+<div class='dropbtn' id='roomicon4".$i."' style='left:3px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist4".$i."' class='dropdown-content4 togglehide' >
+    <img id='icon1111' src='img/imageson/fan-on.png'>
+	<img id='icon3333' src='img/imageson/bulb-on.png'>
+	<img id='icon5555' src='img/imageson/tube-on.png'>
+	<img id='icon7777' src='img/imageson/charger-on.png'>
+	<img id='icon4444' src='img/imageson/AC-on.png'>
+	</div></div></div></div></div>
 ";
-}
-
 for($j=1;$j<=4;$j++){
 	$scrpt[$i]=$scrpt[$i]."
 	$('#img".$j.$i."').click(function(){
@@ -419,9 +475,7 @@ $t1=date_timestamp_get(date_create(date('D M d, Y h:i:s A')))-date_timestamp_get
 height: 48px;
 display: inline-block;
 margin: 0px 5px;
-position:absolute;
-	left:75%;
-	top:15%;
+
 	
 }
 #gallery{
@@ -479,7 +533,7 @@ top:3%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	opacity: 1;
     filter: alpha(opacity=50);
-	width:20%;
+	width:35%;
 }
 .icongallery{
 	display: none;
@@ -535,7 +589,7 @@ padding: 16px 0px;
 }
 
 .dropbtn {
-    color: white;
+	color: white;
     padding: 2px;
     font-size: 16px;
     border: none;
@@ -553,11 +607,12 @@ padding: 16px 0px;
 	height: 48px;
 	display: inline-block;
 	margin: 0px 5px;
-	position:absolute;
-	right:135px;
-	top:35px;
+	top:50px;
 }
-
+.dropbtn img {
+	width: 48px;
+	height:48px;
+}
 .dropbtn:hover, .dropbtn:focus {
     background-color: #3e8e41;
 }
@@ -567,7 +622,7 @@ padding: 16px 0px;
     display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-content1 {
     position: absolute;
 	right:135px;
 	top:75px;
@@ -579,17 +634,87 @@ padding: 16px 0px;
 	z-index: 99;
 }
 
-.dropdown-content a {
+.dropdown-content1 a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 	
 }
-.dropdown-content img{
+.dropdown-content1 img{
 	width:60px;
 	height:60px;
 }
+.dropdown-content2 {
+    position: absolute;
+	right:50px;
+	top:75px;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	max-height: 200px;
+	z-index: 99;
+}
+
+.dropdown-content2 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	
+}
+.dropdown-content2 img{
+	width:60px;
+	height:60px;
+}
+.dropdown-content3 {
+    position: absolute;
+	right:0px;
+	top:75px;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	max-height: 200px;
+	z-index: 99;
+}
+
+.dropdown-content3 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	
+}
+.dropdown-content3 img{
+	width:60px;
+	height:60px;
+}
+.dropdown-content4 {
+    position: absolute;
+	right:-50px;
+	top:75px;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	max-height: 200px;
+	z-index: 99;
+}
+
+.dropdown-content4 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	
+}
+.dropdown-content4 img{
+	width:60px;
+	height:60px;
+}
+
 
 </style>
 <script>

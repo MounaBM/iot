@@ -19,7 +19,7 @@ $username=$row['userName']
 $filename=hash('sha256',strrev(substr($tempID,0,strpos($tempID,'@'))).$row['userPass']).".json";
 $json_file = fopen($filename, "w");
 */
-$username="Mouna";
+$username="veena";
 $userId=15;
 $filename='8bb96db453a58019d25531f97e9d34a5aa2f04d8b9b77ef9ef8116c363f85a31.json';
 //$filename='sample.json';
@@ -189,51 +189,66 @@ $display[$i]="
 	}
 	$scrpt[$i]=$scrpt[$i]."
 		});
-	});	
-	 $('#roomicon1".$i."').click(function(){
-		 $('#iconlist1".$i."').toggleClass('togglehide');//alert('testing');
-	});
-	 $('#roomicon2".$i."').click(function(){
+	});	";
+	for($j=1;$j<=4;$j++){
+		$scrpt[$i]=$scrpt[$i]."
+		$('#icon-btn".$j.$i."').click(function(){
+			var flag=0;
+			if($('#iconlist".$j.$i."').hasClass('togglehide'))flag=1;
+			$('.dropdown-content').addClass('togglehide');			
+			if(flag)$('#iconlist".$j.$i."').toggleClass('togglehide');			
+		});
+		$('.dropdown-content img').click(function(){
+		var icn=$(this).attr('src');
+		var iconbtn='#icon-btn'+($(this).parent().attr('id').substring(8)) + ' img';
+		$(iconbtn).attr('src',icn);
+		$('.dropdown-content').addClass('togglehide');
+	});";
+		
+	}
+/*	"
+	 
+	 $('#icon-btn2".$i."').click(function(){
 		 $('#iconlist2".$i."').toggleClass('togglehide');//alert('testing');
 	});
-	 $('#roomicon3".$i."').click(function(){
+	 $('#icon-btn3".$i."').click(function(){
 		 $('#iconlist3".$i."').toggleClass('togglehide');//alert('testing');
 	});
-	 $('#roomicon4".$i."').click(function(){
+	 $('#icon-btn4".$i."').click(function(){
 		 $('#iconlist4".$i."').toggleClass('togglehide');//alert('testing');
 	});
 	$('.dropdown-content1 img').click(function(){
 		var icn=$(this).attr('src')
 		//alert(icn);
-		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
-		//alert(roomicon);
-		$(roomicon).attr('src',icn);
+		var icon-btn='#icon-btn'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(icon-btn);
+		$(icon-btn).attr('src',icn);
 		
 	});
 	$('.dropdown-content2 img').click(function(){
 		var icn=$(this).attr('src')
 		//alert(icn);
-		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
-		//alert(roomicon);
-		$(roomicon).attr('src',icn);
+		var icon-btn='#icon-btn'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(icon-btn);
+		$(icon-btn).attr('src',icn);
 		
 	});
 	$('.dropdown-content3 img').click(function(){
 		var icn=$(this).attr('src')
 		//alert(icn);
-		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
-		//alert(roomicon);
-		$(roomicon).attr('src',icn);
+		var icon-btn='#icon-btn'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(icon-btn);
+		$(icon-btn).attr('src',icn);
 		
 	});
 	$('.dropdown-content4 img').click(function(){
 		var icn=$(this).attr('src')
 		//alert(icn);
-		var roomicon='#roomicon'+($(this).parent().attr('id').substring(8)) + ' img';
-		//alert(roomicon);
-		$(roomicon).attr('src',icn);
+		var icon-btn='#icon-btn'+($(this).parent().attr('id').substring(8)) + ' img';
+		//alert(icon-btn);
+		$(icon-btn).attr('src',icn);
 		
-	});";
+	});";*/
 //Customising te room naem and button name form; initially it shoud be hidden
 //Change <imput>placeholder will show the current name like room21/ study room
 //There will be arrow link; if you click it will slide down and show the 4 button name input fieldset
@@ -249,38 +264,38 @@ $forms[$i]="
 	<div id='img2".$i."' class='icon_butn' style='position:absolute;top:42%;right:3%;'></div>
 	<div id='img3".$i."' class='icon_butn' style='position:absolute;top:68%;right:3%;'></div>
 </div>
-<!--	<div id='arrow'>	<img src='img/arrow.jpg'  style='width:40px;position:absolute;'>	</div>-->
+
 <input type='text' id='changeroom".$i."' name='roomname' placeholder='".$room[$i]."' style='border: 2px solid #ccc;padding: 6px;margin:0px 20px 10px;' >
-	<div class='roomicon'>
-<div class='dropbtn' id='roomicon1".$i."' style='right:147px;'><img src='img/imageson/music-on.png' ></div>
-<div id='iconlist1".$i."' class='dropdown-content1 togglehide' >
+	<div class='icon-btn'>
+<div class='dropbtn' id='icon-btn1".$i."' style='right:147px;'><img src='img/imageson/music-on.png' ></div>
+<div id='iconlist1".$i."' class='dropdown-content togglehide' style='right:135px;' >
     <img id='icon1' src='img/imageson/fan-on.png'>
 	<img id='icon3' src='img/imageson/bulb-on.png'>
 	<img id='icon5' src='img/imageson/tube-on.png'>
 	<img id='icon7' src='img/imageson/charger-on.png'>
 	<img id='icon4' src='img/imageson/AC-on.png'>
 	</div>
-	<div class='roomicon'>
-<div class='dropbtn' id='roomicon2".$i."' style='right:79px;'><img src='img/imageson/music-on.png'></div>
-<div id='iconlist2".$i."' class='dropdown-content2 togglehide' >
+	<div class='icon-btn'>
+<div class='dropbtn' id='icon-btn2".$i."' style='right:79px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist2".$i."' class='dropdown-content togglehide' style='right:50px;' >
     <img id='icon11' src='img/imageson/fan-on.png'>
 	<img id='icon33' src='img/imageson/bulb-on.png'>
 	<img id='icon55' src='img/imageson/tube-on.png'>
 	<img id='icon77' src='img/imageson/charger-on.png'>
 	<img id='icon44' src='img/imageson/AC-on.png'>
 	</div>
-	<div class='roomicon'>
-<div class='dropbtn' id='roomicon3".$i."' style='right:9px;'><img src='img/imageson/music-on.png'></div>
-<div id='iconlist3".$i."' class='dropdown-content3 togglehide' >
+	<div class='icon-btn'>
+<div class='dropbtn' id='icon-btn3".$i."' style='right:9px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist3".$i."' class='dropdown-content togglehide' style='right:0px;' >
     <img id='icon111' src='img/imageson/fan-on.png'>
 	<img id='icon333' src='img/imageson/bulb-on.png'>
 	<img id='icon555' src='img/imageson/tube-on.png'>
 	<img id='icon777' src='img/imageson/charger-on.png'>
 	<img id='icon444' src='img/imageson/AC-on.png'>
 	</div>
-	<div class='roomicon'>
-<div class='dropbtn' id='roomicon4".$i."' style='left:3px;'><img src='img/imageson/music-on.png'></div>
-<div id='iconlist4".$i."' class='dropdown-content4 togglehide' >
+	<div class='icon-btn'>
+<div class='dropbtn' id='icon-btn4".$i."' style='left:3px;'><img src='img/imageson/music-on.png'></div>
+<div id='iconlist4".$i."' class='dropdown-content togglehide' style='right:-50px;' >
     <img id='icon1111' src='img/imageson/fan-on.png'>
 	<img id='icon3333' src='img/imageson/bulb-on.png'>
 	<img id='icon5555' src='img/imageson/tube-on.png'>
@@ -478,6 +493,9 @@ margin: 0px 5px;
 
 	
 }
+.item{
+	background:url("img/images.jpg") center top no-repeat scroll;
+}
 #gallery{
 	width:384px;
 	height:192px;
@@ -533,7 +551,7 @@ top:3%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	opacity: 1;
     filter: alpha(opacity=50);
-	width:35%;
+	width:20%;
 }
 .icongallery{
 	display: none;
@@ -617,14 +635,13 @@ padding: 16px 0px;
     background-color: #3e8e41;
 }
 
-.roomicon {
+.icon-btn {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content1 {
+.dropdown-content {
     position: absolute;
-	right:135px;
 	top:75px;
     background-color: #f9f9f9;
     min-width: 100px;
@@ -634,87 +651,17 @@ padding: 16px 0px;
 	z-index: 99;
 }
 
-.dropdown-content1 a {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 	
 }
-.dropdown-content1 img{
+.dropdown-content img{
 	width:60px;
 	height:60px;
 }
-.dropdown-content2 {
-    position: absolute;
-	right:50px;
-	top:75px;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	max-height: 200px;
-	z-index: 99;
-}
-
-.dropdown-content2 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-	
-}
-.dropdown-content2 img{
-	width:60px;
-	height:60px;
-}
-.dropdown-content3 {
-    position: absolute;
-	right:0px;
-	top:75px;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	max-height: 200px;
-	z-index: 99;
-}
-
-.dropdown-content3 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-	
-}
-.dropdown-content3 img{
-	width:60px;
-	height:60px;
-}
-.dropdown-content4 {
-    position: absolute;
-	right:-50px;
-	top:75px;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	max-height: 200px;
-	z-index: 99;
-}
-
-.dropdown-content4 a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-	
-}
-.dropdown-content4 img{
-	width:60px;
-	height:60px;
-}
-
 
 </style>
 <script>
@@ -947,6 +894,7 @@ if(count($forms)>0){
 }
 ?>
 <button type='submit' style='display: block;color: red;border: 2px;'>Save</button>
+<button type='submit' style='display: block;color: red;border: 2px;position:absolute;right:10px;bottom:5px;'>Cancel</button>
     </form></div>
   </div>
   

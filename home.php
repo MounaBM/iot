@@ -32,6 +32,63 @@ if(isset($_POST['id'])){
 	echo "<br> hello ".$_POST['id'];
 } */
 
+//$data11 = json_decode(file_get_contents("php://input"));
+  //print_r($data);
+ //echo file_get_contents("php://input");
+
+//__________________________________________________________________________________________________
+
+/* $postinfo="{
+ 'userid': 15,
+  'info': [
+    {
+      'changed': '0',
+      'id': 'icon}kitchen room',
+      'pin05': 'lamp',
+      'pin04': 'tube'
+    },
+    {
+      'changed': '2',
+      'id': 'dining Room'
+    }
+  ]
+}
+"; */
+/* $postinfo = file_get_contents("post.json");
+$data11 = json_decode($postinfo);
+echo $data11->userid;
+	$usrId= $data11->userid;
+$db_file = file_get_contents("db.json");
+$data = json_decode($db_file);
+$filenm="";
+foreach ($data->login as $i => $values) {
+	if($values->id == $usrId)
+		$filenm=$values->filename;
+}  
+echo $filenm; // $jsonfile = file_get_contents($filenm);//$data12 = json_decode($json_file);
+ foreach ($data11->info as $i => $inf) { 
+  if($i==$inf->changed){
+	  echo $inf[1];
+  }
+ }
+ *//*  
+foreach ($data11->info as $i => $inf) { 
+	if(substr($inf->id,0,3) == $deviceId){
+		$n='pin'.$gpioPin;
+		//echo $stat->$n.strlen($stat->$n);
+		$inf->$n=$toggle.substr($inf->$n,1,strlen($inf->$n)-1);
+	}
+}
+
+$json = json_encode($data11, JSON_PRETTY_PRINT);
+file_put_contents($filenm, $json);  */
+
+/*
+foreach ($data11->info as $i => $inf) {
+$ids[$i]=substr($inf->id,0,3);
+$room[$i]=substr($inf->id,4,strlen($inf->id)-4);
+} */
+//__________________________________________________________________________________________________
 $renew=0;
 if(isset($_POST['id']) && isset($_POST['pin']) && isset($_POST['toggle'])){
   $deviceId = $_POST['id'];
@@ -493,9 +550,7 @@ margin: 0px 5px;
 
 	
 }
-.item{
-	background:url("img/images.jpg") center top no-repeat scroll;
-}
+
 #gallery{
 	width:384px;
 	height:192px;
@@ -702,10 +757,10 @@ $(document).ready(function(){
 					var rname='#changeroom'+i;//alert(rname);
 					$(rname).val("");
 					$(rname).attr('placeholder',result[i][j]);
-					alert('Room '+i+' is a '+result[i][j]);
+					//alert('Room '+i+' is a '+result[i][j]);
 				}else{
 					
-					alert('Button '+j +' is a '+result[i][j]);
+					//alert('Button '+j +' is a '+result[i][j]);
 				}
 			}
 			//alert(pin[i]);
@@ -727,6 +782,26 @@ $('.settings_panel').toggleClass('togglehide');
 	 // echo '//Caught exception: ',  $e->getMessage(), "\n";904629735
   }
  ?>
+ $('#savebtn').click(function(e){
+	 var temp= [];
+	for(var i=0;i<<?php echo $size; ?>;i++){
+		temp[i]=["kitchen","roomicom"];
+		
+		
+		for(var j=1,nm="",k="";j<=4;j++){
+			k='#icon-btn'+j;
+			k+=i+' img';
+			nm=$(k).attr('src');
+			temp[i]=["kitchen",nm];
+			 var res = nm.substring(nm.lastIndexOf("/")+1,nm.lastIndexOf("-on.pn"));
+			 alert(k+"\n"+res);
+		}
+		//temp[i]=["kitchen",nm,"b","c","d","e"];
+		//document.write(temp[i] + "<br/>"); 
+		//alert(nm);
+	}
+	
+ });
  $('.icongallery').click(function(e){
 	var offset = $(this).offset();
   var relativeX = (e.pageX - offset.left);
@@ -893,8 +968,8 @@ if(count($forms)>0){
 	}
 }
 ?>
-<button type='submit' style='display: block;color: red;border: 2px;'>Save</button>
-<button type='submit' style='display: block;color: red;border: 2px;position:absolute;right:10px;bottom:5px;'>Cancel</button>
+<button id="savebtn" action="#" style='display: block;color: red;border: 2px;'>Save</button>
+<button style='display: block;color: red;border: 2px;position:absolute;right:10px;bottom:5px;'>Cancel</button>
     </form></div>
   </div>
   

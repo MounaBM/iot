@@ -34,6 +34,11 @@ if(isset($_POST['id'])){
 
 //$data11 = json_decode(file_get_contents("php://input"));
   //print_r($data);
+/*  $data = array();
+    if(isset($_POST['settings'])) {
+        $data[] = $username.' entered:' . $_POST['settings'];
+        exit(json_encode($data));       
+    } */
  //echo file_get_contents("php://input");
 
 //__________________________________________________________________________________________________
@@ -119,9 +124,39 @@ else{
 
 }
 
-if(isset($_POST['roomname'])){
-	//save it on json
-}  
+if(isset($_POST['settings'])){
+/* 	foreach( $_POST as $stuff ) {
+    if( is_array( $stuff ) ) {
+        foreach( $stuff as $thing ) {
+            echo "<br>".$thing;
+        }
+    } else {
+        echo "<br>"."stuffs".$stuff;
+    }
+} */
+
+$chng=$_POST['settings'];
+$chng.=",";
+//echo $chng."<br>";
+for($k=0,$currentpos=0;$k<3;$k++){
+//echo "<br>".$currentpos." next= ".$chng;
+	$pos = substr($chng,0,strpos($chng, ","));
+//	echo "<br>val= ".$pos;
+$currentpos=strpos($chng, ",")+1;
+$chng=substr($chng,$currentpos,strlen($chng)-$currentpos);
+
+$json_file = file_get_contents($filename);//
+$stats = json_decode($json_file);
+foreach ($stats->status as $i => $stat) {
+
+
+
+}
+//$chng=substr(lastIndexOf(2),3);
+//lastIndexOf("/")+1,nm.lastIndexOf("-on.pn"
+//alert($chng);
+}
+}
   
 $json_file = file_get_contents($filename);//
 $stats = json_decode($json_file);
@@ -322,42 +357,42 @@ $forms[$i]="
 	<div id='img3".$i."' class='icon_butn' style='position:absolute;top:68%;right:3%;'></div>
 </div>
 
-<input type='text' id='changeroom".$i."' name='roomname' placeholder='".$room[$i]."' style='border: 2px solid #ccc;padding: 6px;margin:0px 20px 10px;' >
+<input type='text' id='changeroom".$i."' name='roomname".$i."' placeholder='".$room[$i]."' style='border: 2px solid #ccc;padding: 6px;margin:0px 20px 10px;' >
 	<div class='icon-btn'>
-<div class='dropbtn' id='icon-btn1".$i."' style='right:147px;'><img src='img/imageson/music-on.png' ></div>
+<div class='dropbtn' id='icon-btn1".$i."' style='right:147px;'><img src='img/imageson/".substr($stat->$p16,2)."-on.png' alt='".substr($stat->$p16,2)."'></div>
 <div id='iconlist1".$i."' class='dropdown-content togglehide' style='right:135px;' >
-    <img id='icon1' src='img/imageson/fan-on.png'>
-	<img id='icon3' src='img/imageson/bulb-on.png'>
-	<img id='icon5' src='img/imageson/tube-on.png'>
-	<img id='icon7' src='img/imageson/charger-on.png'>
-	<img id='icon4' src='img/imageson/AC-on.png'>
+    <img src='img/imageson/A-on.png'>
+	<img src='img/imageson/B-on.png'>
+	<img src='img/imageson/C-on.png'>
+	<img src='img/imageson/D-on.png'>
+	<img src='img/imageson/E-on.png'>
 	</div>
 	<div class='icon-btn'>
-<div class='dropbtn' id='icon-btn2".$i."' style='right:79px;'><img src='img/imageson/music-on.png'></div>
+<div class='dropbtn' id='icon-btn2".$i."' style='right:79px;'><img src='img/imageson/".substr($stat->$p5,2)."-on.png' alt='".substr($stat->$p5,2)."'></div>
 <div id='iconlist2".$i."' class='dropdown-content togglehide' style='right:50px;' >
-    <img id='icon11' src='img/imageson/fan-on.png'>
-	<img id='icon33' src='img/imageson/bulb-on.png'>
-	<img id='icon55' src='img/imageson/tube-on.png'>
-	<img id='icon77' src='img/imageson/charger-on.png'>
-	<img id='icon44' src='img/imageson/AC-on.png'>
+    <img src='img/imageson/A-on.png'>
+	<img src='img/imageson/B-on.png'>
+	<img src='img/imageson/C-on.png'>
+	<img src='img/imageson/D-on.png'>
+	<img src='img/imageson/E-on.png'>
 	</div>
 	<div class='icon-btn'>
-<div class='dropbtn' id='icon-btn3".$i."' style='right:9px;'><img src='img/imageson/music-on.png'></div>
+<div class='dropbtn' id='icon-btn3".$i."' style='right:9px;'><img src='img/imageson/".substr($stat->$p4,2)."-on.png' alt='".substr($stat->$p4,2)."'></div>
 <div id='iconlist3".$i."' class='dropdown-content togglehide' style='right:0px;' >
-    <img id='icon111' src='img/imageson/fan-on.png'>
-	<img id='icon333' src='img/imageson/bulb-on.png'>
-	<img id='icon555' src='img/imageson/tube-on.png'>
-	<img id='icon777' src='img/imageson/charger-on.png'>
-	<img id='icon444' src='img/imageson/AC-on.png'>
+   <img src='img/imageson/A-on.png'>
+	<img src='img/imageson/B-on.png'>
+	<img src='img/imageson/C-on.png'>
+	<img src='img/imageson/D-on.png'>
+	<img src='img/imageson/E-on.png'>
 	</div>
 	<div class='icon-btn'>
-<div class='dropbtn' id='icon-btn4".$i."' style='left:3px;'><img src='img/imageson/music-on.png'></div>
+<div class='dropbtn' id='icon-btn4".$i."' style='left:3px;'><img src='img/imageson/".substr($stat->$p0,2)."-on.png' alt='".substr($stat->$p0,2)."'></div>
 <div id='iconlist4".$i."' class='dropdown-content togglehide' style='right:-50px;' >
-    <img id='icon1111' src='img/imageson/fan-on.png'>
-	<img id='icon3333' src='img/imageson/bulb-on.png'>
-	<img id='icon5555' src='img/imageson/tube-on.png'>
-	<img id='icon7777' src='img/imageson/charger-on.png'>
-	<img id='icon4444' src='img/imageson/AC-on.png'>
+    <img src='img/imageson/A-on.png'>
+	<img src='img/imageson/B-on.png'>
+	<img src='img/imageson/C-on.png'>
+	<img src='img/imageson/D-on.png'>
+	<img src='img/imageson/E-on.png'>
 	</div></div></div></div></div>
 ";
 for($j=1;$j<=4;$j++){
@@ -782,26 +817,67 @@ $('.settings_panel').toggleClass('togglehide');
 	 // echo '//Caught exception: ',  $e->getMessage(), "\n";904629735
   }
  ?>
- $('#savebtn').click(function(e){
-	 var temp= [];
-	for(var i=0;i<<?php echo $size; ?>;i++){
-		temp[i]=["kitchen","roomicom"];
-		
-		
-		for(var j=1,nm="",k="";j<=4;j++){
+ 
+  $('#setform').one('submit',function(e){//function processForm() {//$('#savebtn').live("click", function () {// $('#savebtn').click(function(e){//
+	var arr=[];
+	for(var i=0,k="";i<<?php echo $size; ?>;i++){
+		 var temp= [];
+		 k="roomname"+i;
+		 $(":input[value=''][value!='.']").attr('disabled', true);
+		// alert(k);
+		 if($(k).val()==""){
+			 
+		 }
+		for(var j=1,nm="",al="";j<=4;j++){
 			k='#icon-btn'+j;
 			k+=i+' img';
 			nm=$(k).attr('src');
-			temp[i]=["kitchen",nm];
-			 var res = nm.substring(nm.lastIndexOf("/")+1,nm.lastIndexOf("-on.pn"));
-			 alert(k+"\n"+res);
+			nm = nm.substring(nm.lastIndexOf("/")+1,nm.lastIndexOf("-on.pn"));
+			al=$(k).attr('alt');
+			if(!(al==nm)){
+	  //$('<input>').attr('type', 'hidden').attr('name', i+','+j).attr('value', nm).appendTo('#setform');
+				temp.push(i+"-"+j+nm);//alert(k+"\n"+res);
+			}
 		}
-		//temp[i]=["kitchen",nm,"b","c","d","e"];
-		//document.write(temp[i] + "<br/>"); 
-		//alert(nm);
+		arr.push(temp);
 	}
-	
+	alert(arr.toString());
+	 $('<input>').attr('type', 'hidden').attr('name', 'settings').attr('value', arr.toString()).appendTo('#setform');
+	 //$(':input[value="k"]').attr('disabled', true);
+	 //alert(k);
+		//console.log( arr.serializeArray() );
+	//var push=JSON.stringify(arr);
+    //alert(push);
+//var array={"settings":arr};
+	// alert(JSON.stringify(array));
+	// e.preventDefault();
+/* 	$.post(window.location,{
+                  data: array,
+                  success: function (data) {
+                     alert("Data Loaded: yesss\n" + data);
+					//  console.log("Response Data" +data);
+			
+                  }
+              }); */
+			/*  $.post('home.php',arr).fail(function() {
+    alert( "error" );
+  }); */
+	//$(this)[0].action=push;//
+	/*   $.ajax({
+        type: 'POST',
+        url:  'home.php',
+        data: array,
+        dataType: 'json'
+      }).done(function(data) {
+        //The code below is executed asynchronously, 
+        //meaning that it does not execute until the
+        //Ajax request has finished, and the response has been loaded.
+        //This code may, and probably will, load *after* any code that
+        //that is defined outside of it.
+        alert("Response Data" +data); //Log the server response to console
+      });//alert("Does this alert appear first or second?");  */
  });
+
  $('.icongallery').click(function(e){
 	var offset = $(this).offset();
   var relativeX = (e.pageX - offset.left);
@@ -823,6 +899,7 @@ if(myClass.indexOf("from_btn")>0)  {
 }//else alert(myClass.indexOf("from_btn"));
 });
 });
+
 /* 
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();   
@@ -960,7 +1037,7 @@ echo "</form></div>"; */
  <div id="settings" class="settings_panel togglehide">
 	<div style="text-align:center;"><h2>Settings</h2></div>
    <div style="padding: 10px;">
-   <form  method="post" action='home.php'>
+   <form  id="setform" method="post" action="home.php">
 <?php 
 if(count($forms)>0){
 		foreach($forms as $i =>$frm){
@@ -968,7 +1045,8 @@ if(count($forms)>0){
 	}
 }
 ?>
-<button id="savebtn" action="#" style='display: block;color: red;border: 2px;'>Save</button>
+</script */>
+<button id="savebtn" type="submit" style='display: block;color: red;border: 2px;'>Save</button>
 <button style='display: block;color: red;border: 2px;position:absolute;right:10px;bottom:5px;'>Cancel</button>
     </form></div>
   </div>
